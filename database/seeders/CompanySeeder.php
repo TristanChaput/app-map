@@ -19,8 +19,8 @@ class CompanySeeder extends Seeder
             'name'         => 'CharlieSolutions',
             'address'      => '11B Avenue de l\'Harmonie, 59650 Villeneuve-d\'Ascq',
             'phone_number' => '0688296028',
-            'latitude'     => '50.60455322265625',
-            'longitude'    => '3.1516542434692383', 
+            'latitude'     => '50.604553',
+            'longitude'    => '3.151654', 
             'created_at'   => date('Y-m-d H:i:s'),
             'updated_at'   => date('Y-m-d H:i:s')
         ]);
