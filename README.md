@@ -1,5 +1,21 @@
 ## APP MAP
 
+# Pré-requis
+
+Laravel 8
+PHP 7 avec l'extension pour postgreSQL (php7.\*-pgsql)
+PostgreSQL
+
+# Pour lancer le projet
+
+Configurer le fichier .env pour la connexion à la base de données.
+
+php artisan migrate
+
+php artisan serve
+
+# Goal
+
 - Créer une base de données avec deux tables :
     - Table entreprise : FAIT
     - Table employé    : FAIT
