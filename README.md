@@ -2,9 +2,9 @@
 
 # Pré-requis
 
-Laravel 8
-PHP 7 avec l'extension pour postgreSQL (php7.\*-pgsql)
-PostgreSQL
+- Laravel 8
+- PHP 7 avec l'extension pour postgreSQL (php7.\*-pgsql)
+- PostgreSQL
 
 # Pour lancer le projet
 
