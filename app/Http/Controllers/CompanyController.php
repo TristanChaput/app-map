@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Company;
+use App\Models\Employee;
 
 class CompanyController extends Controller
 {
@@ -22,6 +23,10 @@ class CompanyController extends Controller
 
     private static function getCompanies(){
         return Company::all();
+    }
+
+    public function getEmployeesFromCompany($id){
+        return Employee::select('employees.*')->join('companies', $id, '=', 'employee.company_id');
     }
 
     /**
@@ -46,14 +51,14 @@ class CompanyController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Show the data for a given company.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\View\View
      */
     public function show($id)
     {
-        //
+        return view('pages/company', ['company'=>Company::findOrFail($id)]);
     }
 
     /**

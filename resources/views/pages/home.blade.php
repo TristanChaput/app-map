@@ -20,8 +20,8 @@
 
     </style>
     <script>
-        let map;
-
+        var map;
+        var clickedInfoWindow = [];
         function initMap() {
             map = new google.maps.Map(document.getElementById("map"), {
                 center: {
@@ -30,12 +30,15 @@
                 },
                 zoom: 16,
             });
+            generateMarkers();
+        }
 
+        function generateMarkers(){
             var listOfCompanies = {!! json_encode($companies, JSON_HEX_TAG) !!};
             console.log(listOfCompanies);
             listOfCompanies.forEach(
                 element => {
-                    var companyName = '<h3>'+ element['name'] +'</h3>';
+                    var companyName = '<h3><a href="/company/'+element['id']+'">'+ element['name'] +'</a></h3>';
                     var marker = new google.maps.Marker({
                         position: {
                             lat: parseFloat(element['latitude']),
@@ -45,22 +48,27 @@
                         draggable: false
                     });
 
-
-                    var infoWindow = new google.maps.InfoWindow({
+                    const infoWindow = new google.maps.InfoWindow({
                         content: companyName,
                     });
 
                     marker.addListener('click', () => {
-                        infoWindow.open(map, marker);
+                        closePreviousInfoWindow();
+                        infoWindow.open(marker.get('map'), marker);
+                        clickedInfoWindow[0] = infoWindow;
                     });
 
                 }
             );
         }
 
-    </script>
-    <script>
-
+        function closePreviousInfoWindow(){
+            if(clickedInfoWindow.length > 0){
+                clickedInfoWindow[0].set("market", null);
+                clickedInfoWindow[0].close();
+                clickedInfoWindow[0].length = 0;
+            }
+        }
 
     </script>
 @endsection
