@@ -1,7 +1,8 @@
 @extends('layouts/app')
 
 @section('head')
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8rc_A20gLTpjkzA8PB90KqPLdpJSmAYA&callback=initMap"></script>
+    <script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8rc_A20gLTpjkzA8PB90KqPLdpJSmAYA&callback=initMap"></script>
     <style type="text/css">
         #map {
             height: 100%;
@@ -20,35 +21,46 @@
     </style>
     <script>
         let map;
-        function initMap(){
-        map = new google.maps.Map(document.getElementById("map"), {
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
                 center: {
                     lat: 50.6070,
                     lng: 3.151654
                 },
                 zoom: 16,
             });
-        
-        var listOfCompanies = {!! json_encode($companies, JSON_HEX_TAG) !!};
-        console.log(listOfCompanies);
-        listOfCompanies.forEach(
-            element => {
-                var marker = new google.maps.Marker({
-                    position: {
-                    lat: parseFloat(element['latitude']),
-                    lng: parseFloat(element['longitude'])
-                },
-                map,
-                draggable: false
-                });
-            }
-        );
+
+            var listOfCompanies = {!! json_encode($companies, JSON_HEX_TAG) !!};
+            console.log(listOfCompanies);
+            listOfCompanies.forEach(
+                element => {
+                    var companyName = '<h3>'+ element['name'] +'</h3>';
+                    var marker = new google.maps.Marker({
+                        position: {
+                            lat: parseFloat(element['latitude']),
+                            lng: parseFloat(element['longitude'])
+                        },
+                        map,
+                        draggable: false
+                    });
+
+
+                    var infoWindow = new google.maps.InfoWindow({
+                        content: companyName,
+                    });
+
+                    marker.addListener('click', () => {
+                        infoWindow.open(map, marker);
+                    });
+
+                }
+            );
         }
 
-        
     </script>
     <script>
-        
+
 
     </script>
 @endsection

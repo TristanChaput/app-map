@@ -16,7 +16,7 @@ class CompanySeeder extends Seeder
     {
         //Create three companies entries
         DB::table('companies')->insert([
-            'name'         => 'CharlieSolutions',
+            'name'         => 'Charlie Solutions',
             'address'      => '11B Avenue de l\'Harmonie, 59650 Villeneuve-d\'Ascq',
             'phone_number' => '0688296028',
             'latitude'     => '50.604553',
