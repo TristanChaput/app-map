@@ -16,15 +16,11 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $data = Company::all();
-        return view('pages/companies', ['data'=>$data]);
+        $companies = self::getCompanies();
+        return view('pages/home', ['companies'=>$companies]);
     }
 
-    public function getCount(){
-        return Company::all()->count();
-    }
-
-    public function getCompanies(){
+    private static function getCompanies(){
         return Company::all();
     }
 

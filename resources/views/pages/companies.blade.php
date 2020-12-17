@@ -7,5 +7,6 @@
                 <li>{{$i->name}}</li>
             @endforeach
         </ul>
+        <h1>{{$count}}</h1>
     </div>
 @endsection

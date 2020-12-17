@@ -1,10 +1,7 @@
 @extends('layouts/app')
 
 @section('head')
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8rc_A20gLTpjkzA8PB90KqPLdpJSmAYA&callback=initMap&libraries=&v=weekly"
-        defer></script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB8rc_A20gLTpjkzA8PB90KqPLdpJSmAYA&callback=initMap"></script>
     <style type="text/css">
         #map {
             height: 100%;
@@ -22,35 +19,36 @@
 
     </style>
     <script>
-        include 'app/Http/Controllers/CompanyController.php' ;
         let map;
-
-        function initMap() {
-            map = new google.maps.Map(document.getElementById("map"), {
+        function initMap(){
+        map = new google.maps.Map(document.getElementById("map"), {
                 center: {
                     lat: 50.6070,
                     lng: 3.151654
                 },
                 zoom: 16,
             });
-
-            generateMarkers();
-        }
         
-        function generateMarkers(){
-            var nbMarkers = "{{ CompanyController::getCount() }}";
-            var listOfCompanies = "{{ CompanyController::getCompanies() }}"
-            listOfCompanies.forEach(element => {
+        var listOfCompanies = {!! json_encode($companies, JSON_HEX_TAG) !!};
+        console.log(listOfCompanies);
+        listOfCompanies.forEach(
+            element => {
                 var marker = new google.maps.Marker({
                     position: {
-                        lat: element.latitude,
-                        lng: element.longitude
-                    }
-                    map: map,
-                    draggable: false
+                    lat: parseFloat(element['latitude']),
+                    lng: parseFloat(element['longitude'])
+                },
+                map,
+                draggable: false
                 });
-            });
+            }
+        );
         }
+
+        
+    </script>
+    <script>
+        
 
     </script>
 @endsection
@@ -60,7 +58,7 @@
     <h1 style="text-align: center"> Welcome to {{ config('app.name') }}</h1>
 
     <div style="margin: 1rem">
-        <a href="/company">Company</a>  
+        <a href="/company">Company</a>
         <a href="/employee">Employee</a>
     </div>
 
