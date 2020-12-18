@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Employee;
 
 class EmployeeController extends Controller
 {
@@ -45,7 +46,7 @@ class EmployeeController extends Controller
      */
     public function show($id)
     {
-        //
+        return view('pages/employee', ['employee'=>Employee::findOrFail($id)]);
     }
 
     /**

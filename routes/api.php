@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\EmployeeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,5 +17,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+    return $request->user();    
 });
+
+Route::get('/company/{id}', [CompanyController::class, 'show']);
+
+Route::get('/{id}', [CompanyController::class, 'getEmployeesFromCompany']);
+
+Route::get('/employee/{id}', [EmployeeController::class, 'show']);

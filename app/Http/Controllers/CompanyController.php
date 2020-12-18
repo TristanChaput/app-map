@@ -17,16 +17,16 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        $companies = self::getCompanies();
-        return view('pages/home', ['companies'=>$companies]);
+        return view('pages/home', ['companies'=>self::getCompanies()]);
     }
 
     private static function getCompanies(){
         return Company::all();
     }
 
+    //select('employees.*')->join('companies', $id, '=', 'employee.company_id')
     public function getEmployeesFromCompany($id){
-        return Employee::select('employees.*')->join('companies', $id, '=', 'employee.company_id');
+        return Employee::select('id','last_name','first_name')->get();    
     }
 
     /**
