@@ -10,6 +10,8 @@
 
 Configurer le fichier .env pour la connexion à la base de données.
 
+Configurer le fichier .env pour l'url de l'application.
+
 php artisan migrate
 
 php artisan serve
@@ -20,7 +22,6 @@ php artisan serve
     - Table entreprise : FAIT
     - Table employé    : FAIT
 - Une map qui affiche les entreprises, en cliquant sur le Marker d'une entreprise 
-    on trouve la liste des employés qui appartient à cette dernière.
-    En cours de création.
-- afficher, éditer et supprimer les données d'une entreprise dans un tableau responsive : Non Fait.
-- afficher, éditer et supprimer les données d'un emplyé dans un tableau responsive : Non Fait.
+    on trouve la liste des employés qui appartient à cette dernière : FAIT
+- afficher, éditer et supprimer les données d'une entreprise dans un tableau responsive : Afficher uniquement.
+- afficher, éditer et supprimer les données d'un emplyé dans un tableau responsive : Afficher uniquement.
