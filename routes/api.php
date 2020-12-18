@@ -24,4 +24,8 @@ Route::get('/company/{id}', [CompanyController::class, 'show']);
 
 Route::get('/{id}', [CompanyController::class, 'getEmployeesFromCompany']);
 
+Route::post('/company/{id}', [CompanyController::class, 'update']);
+
+Route::get('/company/delete/{id}', [CompanyController::class, 'destroy']);
+
 Route::get('/employee/{id}', [EmployeeController::class, 'show']);

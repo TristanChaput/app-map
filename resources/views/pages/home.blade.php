@@ -63,7 +63,7 @@
                                     contentInfoWindow += '<ul>';
                                     data.forEach(
                                         employee => {
-                                            contentInfoWindow += '<li><a href="api/employee/'+employee['id']+'">'+ employee['last_name'] +'<a></li>';
+                                            contentInfoWindow += '<li><a href="api/employee/'+employee['id']+'">'+ employee['last_name'] + " " + employee['first_name'] +'<a></li>';
                                         }
                                     )   
                                     contentInfoWindow += '</ul>';

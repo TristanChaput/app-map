@@ -33,27 +33,6 @@ class CompanyController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
      * Show the data for a given company.
      *
      * @param  int  $id
@@ -65,17 +44,6 @@ class CompanyController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -84,7 +52,14 @@ class CompanyController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Company::find($id);
+        $data->name         = $request->name;
+        $data->address      = $request->address;
+        $data->phone_number = $request->phone_number;
+        $data->latitude     = $request->latitude;
+        $data->longitude    = $request->longitude;
+        $data->save();
+        return redirect('api/company/'.$id);
     }
 
     /**
@@ -95,6 +70,8 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $data = Company::find($id);
+        $data->delete('cascade');
+        return redirect('/');
     }
 }
