@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Company;
-use App\Models\Employee;
+use Illuminate\Support\Facades\DB;
 
 class CompanyController extends Controller
 {
@@ -26,7 +26,10 @@ class CompanyController extends Controller
 
     //select('employees.*')->join('companies', $id, '=', 'employee.company_id')
     public function getEmployeesFromCompany($id){
-        return Employee::select('id','last_name','first_name')->get();    
+        return DB::table('employees')
+                ->where('company_id', '=', $id)
+                ->select('employees.id','last_name','first_name')
+                ->get();    
     }
 
     /**
