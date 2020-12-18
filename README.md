@@ -14,6 +14,8 @@ Configurer le fichier .env pour l'url de l'application.
 
 php artisan migrate
 
+php artisan db:seed
+
 php artisan serve
 
 # Goal
