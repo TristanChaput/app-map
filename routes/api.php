@@ -29,3 +29,7 @@ Route::post('/company/{id}', [CompanyController::class, 'update']);
 Route::get('/company/delete/{id}', [CompanyController::class, 'destroy']);
 
 Route::get('/employee/{id}', [EmployeeController::class, 'show']);
+
+Route::post('/employee/{id}', [EmployeeController::class, 'update']);
+
+Route::get('/employee/delete/{id}', [EmployeeController::class, 'destroy']);

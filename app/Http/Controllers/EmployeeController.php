@@ -69,7 +69,13 @@ class EmployeeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Employee::find($id);
+        $data->last_name    = $request->last_name;
+        $data->first_name   = $request->first_name;
+        $data->address      = $request->address;
+        $data->phone_number = $request->phone_number;
+        $data->save();
+        return redirect('api/employee/'.$id);
     }
 
     /**
@@ -81,5 +87,6 @@ class EmployeeController extends Controller
     public function destroy($id)
     {
         Employee::find($id)->delete();
+        return redirect('/');
     }
 }

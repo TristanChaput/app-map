@@ -70,8 +70,7 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        $data = Company::find($id);
-        $data->delete('cascade');
+        Company::find($id)->delete('cascade');
         return redirect('/');
     }
 }

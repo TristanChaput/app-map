@@ -24,4 +24,4 @@ php artisan serve
 - Une map qui affiche les entreprises, en cliquant sur le Marker d'une entreprise 
     on trouve la liste des employés qui appartient à cette dernière : FAIT
 - afficher, éditer et supprimer les données d'une entreprise dans un tableau responsive : FAIT
-- afficher, éditer et supprimer les données d'un emplyé dans un tableau responsive : Afficher uniquement.
+- afficher, éditer et supprimer les données d'un emplyé dans un tableau responsive : FAIT
