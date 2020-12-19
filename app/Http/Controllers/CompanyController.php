@@ -17,14 +17,9 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return view('pages/home', ['companies'=>self::getCompanies()]);
+        return view('pages/home', ['companies'=>Company::all()]);
     }
 
-    private static function getCompanies(){
-        return Company::all();
-    }
-
-    //select('employees.*')->join('companies', $id, '=', 'employee.company_id')
     public function getEmployeesFromCompany($id){
         return DB::table('employees')
                 ->where('company_id', '=', $id)
